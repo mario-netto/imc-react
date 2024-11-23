@@ -27,7 +27,7 @@ function App() {
 
     return (
         <body>
-            <h1>Cacule seu IMC</h1>
+            <h1>Calcule seu IMC</h1>
             <form>
                 <input type="number" placeholder="Insira sua altura em cm" onKeyUp={e => setAltura(e.target.value)}/>
                 <input type="number" placeholder="Insira seu peso em kl" onKeyUp={e => setPeso(e.target.value)}/>
