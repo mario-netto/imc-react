@@ -34,3 +34,13 @@ form input::placeholder{
 span {
     color: #f4fff3dc;
 }
+
+@media (max-width: 767px) {
+    h1 {
+        font-size: 2.5em;
+    }
+
+    form {
+        text-align: center;
+    }
+}
