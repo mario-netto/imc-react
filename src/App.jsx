@@ -4,10 +4,12 @@ function App() {
     const [altura, setAltura] = useState(0)
     const [peso, setPeso] = useState(0)
 
-    const calcImc = (peso /  ((altura /100 ) ** 2)).toFixed(1)
+    const calcImc = altura > 0 ? parseFloat((peso / ((altura / 100) ** 2)).toFixed(1)) : null;
     
     function verificaImc(imc) {
-        if (imc <= 18.5) {
+        if (isNaN(imc) || imc === Infinity || imc === null) {
+            return `Digite um valor válido`
+        } else if (imc <= 18.5) {
             return `Seu Imc é: ${imc} -> Abaixo do peso`
         } else if (imc >= 18.6 && imc <= 24.9) {
             return `Seu Imc é: ${imc} -> Peso ideal`
@@ -17,7 +19,7 @@ function App() {
             return `Seu Imc é: ${imc} -> Obesidade grau I`
         } else if (imc >= 35 && imc <= 39.9) {
             return `Seu Imc é: ${imc} -> Obesidade grau II (severa)`
-        } else {
+        } else if (imc >= 40){
             return `Seu Imc é: ${imc} -> Obesidade grau III (mórbida)`
         }
     }
@@ -29,7 +31,7 @@ function App() {
             <form>
                 <input type="number" placeholder="Insira sua altura em cm" onKeyUp={e => setAltura(e.target.value)}/>
                 <input type="number" placeholder="Insira seu peso em kl" onKeyUp={e => setPeso(e.target.value)}/>
-                {verificaImc(calcImc)}
+                <span>{verificaImc(calcImc)}</span>
             </form>
         </>
     )
